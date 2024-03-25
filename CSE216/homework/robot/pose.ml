@@ -20,7 +20,13 @@ let mark_pos i =
 
 (*the specified angle of the pose*)
 let get_pose (b, a1, a2, f, m) =
-    function
+    function x ->
+	if x = "base" then b
+	else if x = "arm1" then a1
+	else if x = "arm2" then a2
+	else if x = "finger" then f
+	else if x = "mark" then m
+	else assert false
     (*TODO: return b, a1, a2, f, and m for the parameters
             "base", "arm1", "arm2", "finger", and "mark"
         e.g. get_pose (0., 1., 2., 3., 1.) "arm2"
@@ -28,8 +34,12 @@ let get_pose (b, a1, a2, f, m) =
 
 
 (*the pose whose joint is changed by delta*)
-let chg_pose (b, a1, a2, f, m) joint delta = 
-    (*TODO: return the pose whose angles are switched to
+let chg_pose (b, a1, a2, f, m) joint delta =
+    let checker tag ang = 
+	if tag = joint then ang +. delta
+	else ang in
+    (checker "base" b, checker "arm1" a1, checker "arm2" a2, checker "finger" f, checker "mark" m) 
+	(*TODO: return the pose whose angles are switched to
             b+delta, a1+delta, a2+delta, f+delta, or delta
             depending on the joint parameters of
             "base", "arm1", "arm2", "finger", and "mark"

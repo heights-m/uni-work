@@ -12,14 +12,14 @@ let mark_x = 2.
 (* board ------------------------------
 *)   
 (*get the i-th mark of the board*)
-let get_mark board i =
+let get_mark board i = List.nth board i
     (*TODO: implement this method
       get_mark [mark_o; mark_n; mark_x; mark_o; ...] 2 should be mark_x*)
 
 
 (*the board whose i-th mark is switched to m*)
 let chg_mark board i m =
-    (*TODO: implement this method
+    (*TODO: create new board list??? implement this method
       chg_mark [mark_o; mark_n; mark_x; mark_o; ...] 2 mark_n
       should be [mark_o; mark_n; mark_n; mark_o; ...]*)
 

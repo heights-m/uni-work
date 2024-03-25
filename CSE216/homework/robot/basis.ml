@@ -1,14 +1,13 @@
 (*-------------------------------------
   Basis
 -------------------------------------*)
+#use "vector.ml"
 
-(*basis scale: scale basis by s (float)*)
-let b_scale s (o, x, y, z) =
-    (*TODO*)
+(*basis scale: scale basis by s (float) TODO: ask origin scaling*)
+let b_scale s (o, x, y, z) = (o, v_smul s x, v_smul s y, v_smul s z)
 
 (*basis translation: translate basis by t (vector)*)
-let b_translate t (o, x, y, z) =
-    (*TODO*)
+let b_translate t (o, x, y, z) = (v_add t o, v_add t x, v_add t y, v_add t z)
 
 (*basis rotation*)
 let b_rot ang vrot (o, x, y, z) =
@@ -23,8 +22,8 @@ let b_rotz ang basis = b_rot ang v_rotz basis
 (*convert v (vector) in basis coordinate to the global coordinate*)
 let v2g_basis v  basis =
     let (a, b, c) = v in
-    let (o, x, y, z) = basis in
-    (*TODO*)
+    let (o, x, y, z) = basis in 
+    v_add o (v_add (v_smul a x) (v_add (v_smul b y) (v_smul c z)))
 
 (*convert b (basis) in basis coordinate to the global coordinate*)
 let b2g_basis b basis = 
@@ -47,7 +46,7 @@ let test_basis () =
     assert(z = (0., 0., 2.));
     let (o, x, y, z) = b_translate (1., 2., 3.) gb_basis in
     assert(o = (1., 2., 3.));
-    assert(x = (1., 0., 0.));
+    assert(x = (1., 0., 0.)); (*correct???*)
     assert(y = (0., 1., 0.));
     assert(z = (0., 0., 1.));
     let v = v2g_basis (1., 1., 1.) (o, x, y, z) in
