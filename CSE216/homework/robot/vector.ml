@@ -1,26 +1,22 @@
 (*-------------------------------------
   Vector 3D
 -------------------------------------*)
+#use "globals.ml" (*need?*)
 
 (*vector addition*)
-let v_add (x, y, z) (u, v, w) =
-    (*TODO*) 
+let v_add (x, y, z) (u, v, w) = (x +. u, y +. v, z +. w)
 
 (*vector subtraction*)
-let v_sub (x, y, z) (u, v, w) =
-    (*TODO*)
+let v_sub (x, y, z) (u, v, w) = (x -. u, y -. v, z -. w)
 
 (*scalar multiplication*)
-let v_smul s (x, y, z) =
-    (*TODO*) 
+let v_smul s (x, y, z) = (s *. x, s *. y, s *. z)
 
 (*inner product*)
-let v_prod (x, y, z) (u, v, w) =
-    (*TODO*) 
+let v_prod (x, y, z) (u, v, w) = x *. u +. y *. v +. z *. w 
 
 (*length of a vector*)
-let v_len v =
-    (*TODO: use v_prod*)
+let v_len v = sqrt (v_prod v v)
 
 (*vector rotation*)
 let v_rot2d ang (x, y) = 
