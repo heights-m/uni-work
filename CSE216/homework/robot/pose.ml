@@ -52,6 +52,10 @@ let find_pose (x, y, z) =
     fun f m ->
         let d1 = 0.5 in  (*length of arm1*)
         let d2 = 0.55 in (*length of arm2 + length of finger*)
+	let b = atan2 y x in
+	let d = sqrt (x *. x +. y *. y +. z *. z) in
+	let a2 = acos ( (d *. d -. d1 *. d1 -. d2 *. d2) /. (2. *. d1 *. d2)) in
+	let a1 = 90. -. (asin (z /. d) +. asin (d2 *. (sin a2) /. d))
         (*TODO: find b, a1, and a2 and return the pose (b, a1, a2, f, m)
                  b: angle (deg) of base measured from x axis (use atan2),
                 a1: angle (deg) of arm1 measured from z axis
