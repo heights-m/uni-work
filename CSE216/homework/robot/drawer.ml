@@ -64,7 +64,10 @@ let draw_board board =
     fun basis -> 
         (*draw mark i and plate i in basis coord*)
         let rec iter i =
-            let b_mk    =  gb_basis     (*b_mk: basis for mark i*)
+            let b_mk    = gb_basis |> fun gbb ->    (*b_mk: basis for mark i*)
+            		  b_translate (mark_pos i) gbb |> fun gbb1 ->
+			  b_translate v_tmk gbb1 |> fun gbb2 ->
+			  b2g_basis gbb2 gb_basis in
                         (*TODO: translate gb_basis by mark_pos i*)
                         (*TODO: translate the result by v_tmk*)
                         (*TODO: convert the result in basis coord to global coord*)

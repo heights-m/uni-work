@@ -2,6 +2,7 @@
    Robot pose
 -------------------------------------*)
 #use "board.ml"
+#use "vector.ml"
 
 (*the position of the mark at index i*)   
 let mark_pos i =
@@ -28,7 +29,7 @@ let get_pose (b, a1, a2, f, m) =
 	else if x = "finger" then f
 	else if x = "mark" then m
 	else assert false
-    (*TODO: return b, a1, a2, f, and m for the parameters
+    (* return b, a1, a2, f, and m for the parameters
             "base", "arm1", "arm2", "finger", and "mark"
         e.g. get_pose (0., 1., 2., 3., 1.) "arm2"
         should return 2. *)
@@ -40,7 +41,7 @@ let chg_pose (b, a1, a2, f, m) joint delta =
 	if tag = joint then ang +. delta
 	else ang in
     (checker "base" b, checker "arm1" a1, checker "arm2" a2, checker "finger" f, checker "mark" m) 
-	(*TODO: return the pose whose angles are switched to
+	(* return the pose whose angles are switched to
             b+delta, a1+delta, a2+delta, f+delta, or delta
             depending on the joint parameters of
             "base", "arm1", "arm2", "finger", and "mark"
@@ -53,12 +54,13 @@ let find_pose (x, y, z) =
     fun f m ->
         let d1 = 0.5 in  (*length of arm1*)
         let d2 = 0.55 in (*length of arm2 + length of finger*)
-	let b = atan2 y x in
+	let b = rad2deg (atan2 y x) in
 	let d = sqrt (x *. x +. y *. y +. z *. z) in
 	let a2 = acos ( (d *. d -. d1 *. d1 -. d2 *. d2) /. (2. *. d1 *. d2)) in
-	let a1 = 90. -. (asin (z /. d) +. asin (d2 *. (sin a2) /. d)) in
-	(b, a1, a2, f, m)
-        (*TODO: find b, a1, and a2 and return the pose (b, a1, a2, f, m)
+	let a2d = rad2deg a2 in
+	let a1 = 90. -. rad2deg (asin (z /. d) +. asin (d2 *. (sin a2) /. d)) in
+	(b, a1, a2d, f, m)
+        (*find b, a1, and a2 and return the pose (b, a1, a2, f, m)
                  b: angle (deg) of base measured from x axis (use atan2),
                 a1: angle (deg) of arm1 measured from z axis
                 a2: angle (deg) of arm2 measured from arm1
@@ -78,6 +80,12 @@ let lift_pose pose =
 let test_robot_pose () =
     let pose = (90., 30., 60., 0., mark_n) in 
     let equ_pose pose (b, a1, a2, f, m) =
+	Printf.printf "%f, %f\n" b (get_pose pose "base");
+	Printf.printf "%f, %f\n" a1 (get_pose pose "arm1");
+	Printf.printf "%f, %f\n" a2 (get_pose pose "arm2");
+	Printf.printf "%f, %f\n" f (get_pose pose "finger");
+	Printf.printf "%f, %f\n" m (get_pose pose "mark");
+	Printf.printf "-----\n" ;
         assert (equ b  (get_pose pose "base"));  
         assert (equ a1 (get_pose pose "arm1"));  
         assert (equ a2 (get_pose pose "arm2"));  

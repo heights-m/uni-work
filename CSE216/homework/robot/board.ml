@@ -59,7 +59,5 @@ let test_board () =
     assert(mark_n = get_mark board 5);
     assert(mark_o = (board |> fun b -> chg_mark b 5 mark_o
                            |> fun b -> get_mark b 5));
-    let chboard = chg_mark board 4 mark_o in
-    print_board chboard;
     Printf.printf("test board done\n")
 let _ = test_board ()
