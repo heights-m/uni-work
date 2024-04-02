@@ -14,7 +14,7 @@ let moveto_pose b_camera (pose, board) target_pose =
            => rotate arm1 5 times 6 deg each
     *)
     let rot_joint pose joint ang step =
-      let ang_seg = ang /. step in
+      let ang_seg = ang /. (float_of_int step) in
       let draw_frame chpose =
         Thread.delay 0.05;
         draw b_camera chpose board in
