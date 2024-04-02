@@ -38,7 +38,9 @@ let get_pose (b, a1, a2, f, m) =
 (*the pose whose joint is changed by delta*)
 let chg_pose (b, a1, a2, f, m) joint delta =
     let checker tag ang = 
-	if tag = joint then ang +. delta
+	if tag = joint then 
+		if tag = "mark" then delta
+		else ang +. delta
 	else ang in
     (checker "base" b, checker "arm1" a1, checker "arm2" a2, checker "finger" f, checker "mark" m) 
 	(* return the pose whose angles are switched to
