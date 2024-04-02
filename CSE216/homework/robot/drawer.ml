@@ -73,7 +73,7 @@ let draw_board board =
                         (*TODO: convert the result in basis coord to global coord*)
 
             let b_pl    =  gb_basis |>    (*b_pl: basis for plate i*)
-	    		   b_translate (mark_pos 1) |> fun gbtrans ->
+	    		   b_translate (mark_pos i) |> fun gbtrans ->
 	  		   b2g_basis gbtrans basis in
                         (*TODO: translate gb_basis by mark_pos i*)
                         (*TODO: convert the result in basis coord to global coord*)
