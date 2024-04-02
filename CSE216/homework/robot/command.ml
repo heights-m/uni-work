@@ -62,7 +62,7 @@ let drop (pose, board) i =
     let f = get_pose pose "finger" in
     let m = get_pose pose "mark" in
     let j = if m = mark_o then 9 else 10 in
-    let p = (get_pose pose "base", get_pose pose "arm1", get_pose pose "arm2", (10. -. f), mark_n) in
+    let p = (get_pose pose "base", get_pose pose "arm1", get_pose pose "arm2", 10., mark_n) in
     let b = chg_mark board i m |> fun b -> chg_mark b j m in
     (p, b)
     (*TODO: return (p, b),
