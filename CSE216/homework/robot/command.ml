@@ -14,6 +14,15 @@ let moveto_pose b_camera (pose, board) target_pose =
            => rotate arm1 5 times 6 deg each
     *)
     let rot_joint pose joint ang step =
+      let ang_seg = ang /. step in
+      let draw_frame chpose =
+        Thread.delay 0.05;
+        draw b_camera chpose board in
+      let rec draw_frames step_cnt chpose =
+        if step_cnt = 0
+        then chpose
+        else 
+        
         (*TODO: implement this method
             - on each step, draw the robot and the board
             - wait for 50ms by calling Thread.delay 0.05
