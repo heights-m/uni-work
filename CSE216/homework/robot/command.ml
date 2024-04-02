@@ -95,7 +95,7 @@ let mark b_camera (pose, board) mrk dst =
     mvp (pose, board) src_pose |> fun b ->
     pick b src |> fun b ->
     mvp b (lift_pose (get_pose_tup b)) |> fun b ->
-    mvp b dst_post |> fun b ->
+    mvp b dst_pose |> fun b ->
     drop b dst |> fun b ->
     mvp b (lift_pose (get_pose_tup b)) 
     
