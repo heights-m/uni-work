@@ -27,7 +27,7 @@ let print expr =
 	| OR  (a, b) -> to_str a (fun sa ->
 			to_str b (fun sb ->
 			k (sprintf "OR(%s, %s)" sa sb))) 
-	| NOT a	    -> to_str a (fun sa -> k (sprintf "NOT(%s)"))
+	| NOT a	    -> to_str a (fun sa -> k (sprintf "NOT(%s)" sa))
 	| IF (c, t, f) -> to_str c (fun sc ->
 			  to_str t (fun st ->
 			  to_str f (fun sf ->
@@ -58,4 +58,35 @@ let rec eval expr env k =
                         else lookup name rest in
 
     match expr with
-	| BOOL b -> 
+	| BOOL b -> k (BOOL b)
+	| NUM  n -> k (NUM  n)
+	| VAR  v -> lookup v env
+	| ADD (a, b)	-> eval a env (fun x ->
+			   eval b env (fun y ->
+			   k (NUM (dropNUM x + dropNUM y)))) 
+	| SUB (a, b)	-> eval a env (fun x ->
+			   eval b env (fun y ->
+			   k (NUM (dropNUM x - dropNUM y)))) 
+	| EQ (a, b)	-> eval a env (fun x ->
+			   eval b env (fun y ->
+			   k (BOOL (dropNUM x = dropNUM y)))) 
+	| GE (a, b)	-> eval a env (fun x ->
+			   eval b env (fun y ->
+			   k (BOOL (dropNUM x >= dropNUM y)))) 
+	| AND (a, b)	-> eval a env (fun x ->
+			   eval b env (fun y ->
+			   k (BOOL (dropBOOL x && dropBOOL y)))) 
+	| OR (a, b)	-> eval a env (fun x ->
+			   eval b env (fun y ->
+			   k (BOOL (dropBOOL x || dropBOOL y)))) 
+	| NOT a		-> eval a env ( fun x ->
+			   k (BOOL (not (dropBOOL x))))
+	| IF (c, t, f)  -> eval c env (fun x ->
+			   if dropBOOL x then eval t env k
+					 else eval f env k)
+	| FUN (v, e)    -> k (CLO (v, e, env))
+	| APP (f, a)    -> eval f env (fun clo ->
+			   eval a env (fun x ->
+			   dropCLO clo |> fun (v, e, ev) ->
+			   eval e ((v, x)::ev) k))
+	| _ -> assert false
