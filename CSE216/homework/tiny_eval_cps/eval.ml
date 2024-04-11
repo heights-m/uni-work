@@ -60,7 +60,7 @@ let rec eval expr env k =
     match expr with
 	| BOOL b -> k (BOOL b)
 	| NUM  n -> k (NUM  n)
-	| VAR  v -> lookup v env
+	| VAR  v -> k (lookup v env)
 	| ADD (a, b)	-> eval a env (fun x ->
 			   eval b env (fun y ->
 			   k (NUM (dropNUM x + dropNUM y)))) 
