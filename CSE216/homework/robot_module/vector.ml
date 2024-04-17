@@ -9,23 +9,23 @@ open Globals
 module VectImpl: Ivector.IVect = struct
 
     (*vector addition*)
-    let add (x, y, z) (u, v, w) =
+    let add (x, y, z) (u, v, w) = (x +. u, y +. v, z +. w)
         (*TODO*)
 
     (*vector subtraction*)
-    let sub (x, y, z) (u, v, w) =
+    let sub (x, y, z) (u, v, w) = (x -. u, y -. v, z -. w)
         (*TODO*)
 
     (*scalar multiplication*)
-    let smul s (x, y, z)  =
+    let smul s (x, y, z)  = (s *. x, s *. y, s *. z)
         (*TODO*)
 
     (*inner product*)
-    let prod (x, y, z) (u, v, w) =
+    let prod (x, y, z) (u, v, w) = x *. u +. y *. v +. z *. w
         (*TODO*)
 
     (*length of a vector*)
-    let len v =
+    let len v = sqrt (v_prod v v)
         (*TODO*)
 
     (*vector rotation*)
