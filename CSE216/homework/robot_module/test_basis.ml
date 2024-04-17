@@ -6,7 +6,7 @@ open Globals
 module TestBasis = struct
     
     module Vect = Vector.VectImpl
-    module Basis = (*TODO: Basis module using BasisImpl and Vect*)
+    module Basis = BasisImpl (Vect) (*TODO: Basis module using BasisImpl and Vect*)
 
     let test () =
         let (o, x, y, z) = Basis.scale 2. gb_basis in
