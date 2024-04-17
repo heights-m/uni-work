@@ -25,7 +25,7 @@ module VectImpl: Ivector.IVect = struct
         (*TODO*)
 
     (*length of a vector*)
-    let len v = sqrt (v_prod v v)
+    let len v = sqrt (prod v v)
         (*TODO*)
 
     (*vector rotation*)
@@ -42,3 +42,4 @@ module VectImpl: Ivector.IVect = struct
 
     let rotz ang (x, y, z) =
         rot2d ang (x, y) |> fun (u, v) -> (u, v, z)
+end

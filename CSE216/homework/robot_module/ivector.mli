@@ -3,7 +3,7 @@
 -------------------------------------*)
 open Globals
 
-module type Ivect = sig
+module type IVect = sig
 
 val add: vector -> vector -> vector
 val sub: vector -> vector -> vector
