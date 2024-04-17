@@ -10,11 +10,11 @@ open Globals
 module BasisImpl (Vect: Ivector.IVect): Ibasis.IBasis = struct
 
     (*basis scale: scale basis by s (float)*)
-    let scale s (o, x, y, z) =
+    let scale s (o, x, y, z) = (o, Vect.mul s x, Vect.mul s y, Vect.mul s z)
         (*TODO*) 
 
     (*basis translation: translate basis by t (vector)*)
-    let translate t (o, x, y, z) =
+    let translate t (o, x, y, z) = (Vect.add t o, x, y, z)
         (*TODO*) 
 
     (*basis rotation*)
@@ -34,6 +34,7 @@ module BasisImpl (Vect: Ivector.IVect): Ibasis.IBasis = struct
     let v2g_basis v  basis =
         let (a, b, c) = v in
         let (o, x, y, z) = basis in
+        Vect.add o (Vect.add (Vect.mul a x) (Vect.add (Vect.mul b y) (Vect.mul c z)))
         (*TODO*)
 
 
@@ -46,3 +47,4 @@ module BasisImpl (Vect: Ivector.IVect): Ibasis.IBasis = struct
           (v2g_basis x basis'),
           (v2g_basis y basis'),
           (v2g_basis z basis') ) 
+end
