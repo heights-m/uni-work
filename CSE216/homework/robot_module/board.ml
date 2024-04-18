@@ -4,7 +4,7 @@
 
 (*TODO: Implement BoardImpl module.
     BoardImpl implements the signature Iboard.IBoard*)
-
+module BoardImpl: Iboard.IBoard = struct
     (*constants*)
     let mark_n = 0. 
     let mark_o = 1. 
@@ -12,12 +12,24 @@
 
     (*get the i-th mark of the board*)
     let get_mark board i =
+      	let rec iter j = function
+    		| [] -> assert false
+    		| hd :: tl -> 	if j > 0 
+    			      	then iter (j-1) tl 
+    			      	else hd in 
+  	    iter i board 
         (*TODO: implement this method
         get_mark [mark_o; mark_n; mark_x; mark_o; ...] 2 should be mark_x*)
 
 
     (*the board whose i-th mark is switched to m*)
     let chg_mark board i m =
+      	let rec iter j = function
+    		| [] -> []
+    		| hd :: tl -> 	if j = 0
+    				then m :: tl
+    				else hd :: iter (j-1) tl in
+  	    iter i board
         (*TODO: implement this method
         chg_mark [mark_o; mark_n; mark_x; mark_o; ...] 2 mark_n
         should be [mark_o; mark_n; mark_n; mark_o; ...]*)
@@ -63,10 +75,14 @@
         find the index of the first empty position, or 9 if it doesn't exist
         e.g. empty_pos [mark_o; mark_x; mark_n; mark_o; ...] should be 2*)
     let empty_pos board =
-
-
+        let rec iter i = function
+          | [] -> 9
+          | hd :: tl -> if hd = mark_n
+                        then i
+                        else iter (i+1) tl in
+        iter 0 board
 
     (*is the game over?*)
     let game_over board =
         winner board <> mark_n || empty_pos board = 9        
-
+end
