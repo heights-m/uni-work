@@ -12,7 +12,7 @@ open Idrawer
     DrawerImpl takes modules
         Vect of IVect type, Basis of IBasis type, Board of IBoard type, Pose of IPose type in this order
     and implements the signature IDrawer*)
-
+module DrawImpl (Vect: Ivect) (Basis: IBasis) (Board: IBoard) (Pose: IPose): IDrawer = struct
     (*open a graphics window*)
     let open_graph () =
         Graphics.open_graph " 800x800";
@@ -90,12 +90,17 @@ open Idrawer
         fun basis -> 
             (*draw mark i and plate i in basis coord*)
             let rec iter i =
-                let b_mk    =  gb_basis     (*b_mk: basis for mark i*)
+                let b_mk    =   gb_basis |>    (*b_mk: basis for mark i*)
+                                Basis.translate (mark_pos i) |> 
+                                Basis.translate v_tmk |>  fun gbtrans ->
+                                Basis.b2g_basis gbtrans basis in
                             (*TODO: translate gb_basis by mark_pos i*)
                             (*TODO: translate the result by v_tmk*)
                             (*TODO: convert the result in basis coord to global coord*)
 
-                let b_pl    =  gb_basis     (*b_pl: basis for plate i*)
+                let b_pl    =   gb_basis |>    (*b_pl: basis for plate i*)
+                                Basis.translate (mark_pos i) |> fun gbtrans ->
+                                Basis.b2g_basis gbtrans basis in
                             (*TODO: translate gb_basis by mark_pos i*)
                             (*TODO: convert the result in basis coord to global coord*)
 
@@ -132,19 +137,30 @@ open Idrawer
         let v_tf2 = (0.0,  0.08, 0.5/.s)    in
         let v_tmk = (0.0,0.0,0.5/.s +. 0.1) in
         fun basis ->
-            let b_f1    = gb_basis  (*b_f1: basis for finger 1*)
+            let b_f1    = gb_basis |> (*b_f1: basis for finger 1*)
+                          Basis.rotx (Pose.get_pose pose "finger") |>
+                          Basis.scale 0.2 |>
+                          Basis.translate v_tf1 |> fun gbtrans ->
+                          Basis.b2g_basis gbtrans basis in
                         (*TODO: rotate gb_basis by the finger angle of pose around x axis*)
                         (*TODO: scale the result by 0.2*)
                         (*TODO: translate the result by v_tf1*)
                         (*TODO: convert the result in basis coord to global coord*)
 
-            let b_f2    = gb_basis  (*b_f2: basis for finger 2*)
+            let b_f2    = gb_basis |> (*b_f2: basis for finger 2*)
+                          Basis.rotx (-. (Pose.get_pose pose "finger")) |>
+                          Basis.scale 0.2 |>
+                          Basis.translate v_tf2 |> fun gbtrans ->
+                          Basis.b2g_basis gbtrans basis in
                         (*TODO: rotate gb_basis by - finger angle of pose around x axis*)
                         (*TODO: scale the result by 0.2*)
                         (*TODO: translate the result by v_tf2*)
                         (*TODO: convert the result in basis coord to global coord*)
 
-            let b_mk    = gb_basis  (*b_mk: basis for mark*)
+            let b_mk    = gb_basis |> (*b_mk: basis for mark*)
+                          Basis.scale 0.1 |>
+                          Basis.translate v_tmk |> fun gbtrans ->
+                          Basis.b2g_basis gbtrans basis in
                         (*TODO: scale bb_basis by 0.1*)
                         (*TODO: translate the result by v_tmk*)
                         (*TODO: convert the result in basis coord to global coord*)
@@ -161,7 +177,11 @@ open Idrawer
         let s     = 0.9 in
         let v_ta2 = (0.0,0.0,0.56) in
         fun basis ->
-            let b_a2    = gb_basis  (*b_a2: basis for arm 2*)
+            let b_a2    = gb_basis |> (*b_a2: basis for arm 2*)
+                          Basis.roty (Pose.get_pose "arm2") |>
+                          Basis.scale 0.5 |>
+                          Basis.translate v_ta2 |> fun gbtrans ->
+                          Basis.b2g_basis gbtrans basis in
                         (*TODO: rotate gb_basis by arm2 angle of pose around y axis*)
                         (*TODO: scale the result by 0.5*)
                         (*TODO: translate the result by v_ta2*)
@@ -176,7 +196,11 @@ open Idrawer
     let draw_base pose =
         let v_ta1 = (0.0,0.0,0.1) in
         fun basis ->
-            let b_a1    = gb_basis   (*b_a1: basis for arm 1*)
+            let b_a1    = gb_basis |>  (*b_a1: basis for arm 1*)
+                          Basis.roty (Pose.get_pose "arm1") |>
+                          Basis.scale 0.9 |>
+                          Basis.translate v_ta1 |> fun gbtrans ->
+                          Basis.b2g_basis gbtrans basis in
                         (*TODO: rotate gb_basis by arm1 angle of pose around y axis*)
                         (*TODO: scale the result by 0.9*)
                         (*TODO: translate the result by v_ta1*)
@@ -190,7 +214,9 @@ open Idrawer
 
     let draw_robot pose =
         fun basis ->
-            let b_bs    = gb_basis  (*b_bs: basis for base*)
+            let b_bs    = gb_basis |> (*b_bs: basis for base*)
+                          Basis.rotz (Pose.get_pose pose "base") |> fun gbtrans ->
+                          Basis.b2g_basis gbtrans basis in
                         (*TODO: rotate gb_basis by base angle of pose around z axis*)
                         (*TODO: convert the result in basis coord to global coord*)
 
