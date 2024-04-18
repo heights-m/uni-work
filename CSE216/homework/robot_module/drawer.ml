@@ -91,7 +91,7 @@ module DrawImpl (Vect: Ivect) (Basis: IBasis) (Board: IBoard) (Pose: IPose): IDr
             (*draw mark i and plate i in basis coord*)
             let rec iter i =
                 let b_mk    =   gb_basis |>    (*b_mk: basis for mark i*)
-                                Basis.translate (mark_pos i) |> 
+                                Basis.translate (Pose.mark_pos i) |> 
                                 Basis.translate v_tmk |>  fun gbtrans ->
                                 Basis.b2g_basis gbtrans basis in
                             (*TODO: translate gb_basis by mark_pos i*)
@@ -99,7 +99,7 @@ module DrawImpl (Vect: Ivect) (Basis: IBasis) (Board: IBoard) (Pose: IPose): IDr
                             (*TODO: convert the result in basis coord to global coord*)
 
                 let b_pl    =   gb_basis |>    (*b_pl: basis for plate i*)
-                                Basis.translate (mark_pos i) |> fun gbtrans ->
+                                Basis.translate (Pose.mark_pos i) |> fun gbtrans ->
                                 Basis.b2g_basis gbtrans basis in
                             (*TODO: translate gb_basis by mark_pos i*)
                             (*TODO: convert the result in basis coord to global coord*)
