@@ -12,7 +12,7 @@ open Idrawer
     DrawerImpl takes modules
         Vect of IVect type, Basis of IBasis type, Board of IBoard type, Pose of IPose type in this order
     and implements the signature IDrawer*)
-module DrawImpl (Vect: Ivect) (Basis: IBasis) (Board: IBoard) (Pose: IPose): IDrawer = struct
+module DrawImpl (Vect: IVect) (Basis: IBasis) (Board: IBoard) (Pose: IPose): IDrawer = struct
     (*open a graphics window*)
     let open_graph () =
         Graphics.open_graph " 800x800";
@@ -178,7 +178,7 @@ module DrawImpl (Vect: Ivect) (Basis: IBasis) (Board: IBoard) (Pose: IPose): IDr
         let v_ta2 = (0.0,0.0,0.56) in
         fun basis ->
             let b_a2    = gb_basis |> (*b_a2: basis for arm 2*)
-                          Basis.roty (Pose.get_pose "arm2") |>
+                          Basis.roty (Pose.get_pose pose "arm2") |>
                           Basis.scale 0.5 |>
                           Basis.translate v_ta2 |> fun gbtrans ->
                           Basis.b2g_basis gbtrans basis in
@@ -197,7 +197,7 @@ module DrawImpl (Vect: Ivect) (Basis: IBasis) (Board: IBoard) (Pose: IPose): IDr
         let v_ta1 = (0.0,0.0,0.1) in
         fun basis ->
             let b_a1    = gb_basis |>  (*b_a1: basis for arm 1*)
-                          Basis.roty (Pose.get_pose "arm1") |>
+                          Basis.roty (Pose.get_pose pose "arm1") |>
                           Basis.scale 0.9 |>
                           Basis.translate v_ta1 |> fun gbtrans ->
                           Basis.b2g_basis gbtrans basis in
@@ -229,3 +229,4 @@ module DrawImpl (Vect: Ivect) (Basis: IBasis) (Board: IBoard) (Pose: IPose): IDr
         draw_robot pose  b_camera;
         draw_board board b_camera; 
         Graphics.synchronize ()
+end

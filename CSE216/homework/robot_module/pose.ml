@@ -85,3 +85,4 @@ module PoseImpl (Vect: IVect) (Basis: IBasis) (Board: IBoard): IPose = struct
         let f = get_pose pose "finger" in
         let m = get_pose pose "mark"   in
         (b, 10., 70., f, m)
+end
