@@ -7,7 +7,7 @@ open Globals
     PlayerKey takes a module Board of Iboard.IBoard type
     and implements the signature Iplayer.IPlayer*)
 
-
+module PlayerKey (Board: Iboard.IBoard): Iplayer.IPlayer = struct
     (*read a keyboard input*)
     let rec get_key () =    
         try
@@ -28,3 +28,4 @@ open Globals
             else play mrk board
         else if k = 'q' then 9
         else play mrk board
+end
