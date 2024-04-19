@@ -5,9 +5,9 @@ open Globals
 
 module TestPose = struct
     module Vect  = Vector.VectImpl
-    module Basis = (*TODO: build Basis using BasisImpl and Vect*)
+    module Basis = Basis.BasisImpl (Vect) (*TODO: build Basis using BasisImpl and Vect*)
     module Board = Board.BoardImpl 
-    module Pose  = (*TODO: build Pose using PoseImpl, Vect, Basis, Board*)
+    module Pose  = Pose.PoseImpl (Vect) (Basis) (Board)(*TODO: build Pose using PoseImpl, Vect, Basis, Board*)
 
     (*unit equ_pose*)
     let equ_pose () =
