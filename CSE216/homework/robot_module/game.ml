@@ -13,7 +13,7 @@ open Iplayer
         Board of IBoard type, Drawer of IDrawer type, Command of ICommand type,
         PlayerO of IPlayer type PlayerX of IPlayer type in this order
     and implements the signature IGame*)
-
+module GameImpl (Board: IBoard) (Drawer: IDrawer) (Command: ICommand) (PlayerO: IPlayer) (PlayerX: IPlayer): IGame = struct
     (*run the game*)
     let rec game b_camera (pose, board) =
         let open Command in
@@ -39,3 +39,4 @@ open Iplayer
         if      m = Board.mark_o then Printf.printf "O win! :)\n"
         else if m = Board.mark_x then Printf.printf "X win! :)\n"
         else                          Printf.printf "No winner\n" 
+end
