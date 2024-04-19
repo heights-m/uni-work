@@ -5,7 +5,7 @@ open Globals
 
 module TestPlayerCom = struct
     module Board  = Board.BoardImpl 
-    module Player = Player_com.PlayerCom(*TODO: build a module for a computer player*)
+    module Player = Player_com.PlayerCom (Board) (*TODO: build a module for a computer player*)
 
     (*unit test*)
     let test () =
