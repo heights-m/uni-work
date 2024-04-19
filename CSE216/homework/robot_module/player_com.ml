@@ -6,7 +6,7 @@ open Globals
 (*TODO: Implement PlayerCom module.
     PlayerCom takes a module Board of Iboard.IBoard type
     and implements the signature Iplayer.IPlayer*)
-
+module PlayerCom (Board: Iboard.IBoard): Iplayer.IPlayer =  struct
 
     (*play by the computer*)
     let play mrk board = 
@@ -27,6 +27,15 @@ open Globals
               no winning position for X.
         *)    
         let rec iter m i =
+            if i < 9 then
+                if Board.get_mark board i <> Board.mark_n 
+                then iter m (i+1)
+                else 
+                    if Board.winner (Board.chg_mark board i m) <> Board.mark_n
+                    then i
+                    else iter m (i+1)
+            else 9 in 
+        
 
 
         iter mrk 0 |> fun i -> (*this player*)
@@ -36,3 +45,4 @@ open Globals
             if i <> 9 then i
             else
         Board.empty_pos board
+end
