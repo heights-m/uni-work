@@ -9,17 +9,17 @@ module TestCommand = struct
     module Basis = Basis.BasisImpl (Vect)
     module Board = Board.BoardImpl 
     (*TODO: build Pose using PoseImpl, Basis, Board*)
-    module Pose  = Pose.PoseImpl (Basis) (Board)
+    module Pose  = Pose.PoseImpl (Vect) (Basis) (Board)
     (*TODO: build MockDrawer of IDrawer type that simply returns unit from all of its functions*)
     module MockDrawer: Idrawer.IDrawer = struct
         let open_graph u = ()
         let close_graph u = ()
         let delay u = ()
-        let draw u = ()
+        let draw b p bo = ()
     end
         
     (*TODO: build module Command using CommandImpl, Pose, MockDrawer, Board*)
-    module Command = Command.CommandImpl (Pose) (Mockdrawer) (Board) 
+    module Command = Command.CommandImpl (Pose) (MockDrawer) (Board) 
 
     (*unit test*)
     let test () =

@@ -27,7 +27,7 @@ module CommandImpl (Pose: IPose) (Drawer: IDrawer) (Board: IBoard): ICommand = s
               let ang_seg = ang /. (float_of_int step) in
               let draw_frame chpose =
                 Drawer.delay 0.05;
-                draw b_camera chpose board in
+                Drawer.draw b_camera chpose board in
               let rec draw_frames step_cnt chpose =
                 if step_cnt = 0
                 then chpose
@@ -56,7 +56,7 @@ module CommandImpl (Pose: IPose) (Drawer: IDrawer) (Board: IBoard): ICommand = s
     let pick (pose, board) i =
         let f = Pose.get_pose pose "finger" in
         let m = Board.get_mark board i in
-        let b = Board.chg_mark board i mark_n in
+        let b = Board.chg_mark board i Board.mark_n in
         let p = (Pose.get_pose pose "base", Pose.get_pose pose "arm1", Pose.get_pose pose "arm2", 0., m) in
         (p, b)
         (*TODO: return (p, b), where p is the pose whose
@@ -103,10 +103,10 @@ module CommandImpl (Pose: IPose) (Drawer: IDrawer) (Board: IBoard): ICommand = s
     
         mvp (pose, board) src_pose |> fun b ->
         pick b src |> fun b ->
-        mvp b (lift_pose (get_pose_tup b)) |> fun b ->
+        mvp b (Pose.lift_pose (get_pose_tup b)) |> fun b ->
         mvp b dst_pose |> fun b ->
         drop b dst |> fun b ->
-        mvp b (lift_pose (get_pose_tup b)) 
+        mvp b (Pose.lift_pose (get_pose_tup b)) 
         (*TODO: 1. move to pose src_pose (use mvp)
                 2. pick the mark at src  (use pick)
                 3. lift                  (use mvp and lift_pose)
