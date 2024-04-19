@@ -99,14 +99,14 @@ module CommandImpl (Pose: IPose) (Drawer: IDrawer) (Board: IBoard): ICommand = s
         (*moveto_pose with the first param applied*)
         let mvp = moveto_pose b_camera in
         
-        let Pose.get_pose_tup tup = let (p, _) = tup in p in
+        let get_pose_tup tup = let (p, _) = tup in p in
     
         mvp (pose, board) src_pose |> fun b ->
         pick b src |> fun b ->
-        mvp b (lift_pose (Pose.get_pose_tup b)) |> fun b ->
+        mvp b (lift_pose (get_pose_tup b)) |> fun b ->
         mvp b dst_pose |> fun b ->
         drop b dst |> fun b ->
-        mvp b (lift_pose (Pose.get_pose_tup b)) 
+        mvp b (lift_pose (get_pose_tup b)) 
         (*TODO: 1. move to pose src_pose (use mvp)
                 2. pick the mark at src  (use pick)
                 3. lift                  (use mvp and lift_pose)
