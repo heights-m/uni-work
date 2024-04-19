@@ -14,7 +14,7 @@ module App = struct
     module PlayerKey = Player_key.PlayerKey (Board)
 
     (*TODO: Build module Game for Keyboard vs Computer game*)
-    module Game      = 
+    module Game      = Game.GameImpl (Board) (Drawer) (Command) (PlayerKey) (PlayerCom)
 
     let main () =
         let open Board in
