@@ -7,7 +7,12 @@ module TestGame = struct
     module Board = Board.BoardImpl 
 
     (*TODO: build MockDrawer of IDrawer type that simply returns unit from all of its functions*)
-    module MockDrawer
+    module MockDrawer: Idrawer.IDrawer = struct
+        let open_graph u = ()
+        let close_graph u = ()
+        let delay u = ()
+        let draw b p bo = ()
+    end
 
     module MockCommand: Icommand.ICommand = struct
         let mark basis (pose, board) mrk i = 
@@ -17,11 +22,11 @@ module TestGame = struct
     end
 
     (*TODO: build a module for a computer player*)
-    module Player = 
+    module Player = Player_com.PlayerCom (Board)
     
     (*TODO: build Game using GameImpl, Board, MockDrawer, MockCommand,
         and two Players: it is a game between two computer players*)    
-    module Game   = 
+    module Game   = Game.GameImpl (Board) (MockDrawer) (MockCommand) (Player) (Player)
 
     (*unit test*)
     let test () =
