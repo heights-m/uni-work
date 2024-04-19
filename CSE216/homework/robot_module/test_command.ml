@@ -6,12 +6,18 @@ open Globals
 module TestCommand = struct
     module Vect  = Vector.VectImpl
     (*TODO: build Basis using BasisImpl and Vect*)
-    module Basis = 
+    module Basis = Basis.BasisImpl (Vect)
     module Board = Board.BoardImpl 
     (*TODO: build Pose using PoseImpl, Basis, Board*)
-    module Pose  = 
+    module Pose  = Pose.PoseImpl (Basis) (Board)
     (*TODO: build MockDrawer of IDrawer type that simply returns unit from all of its functions*)
-    module MockDrawer
+    module MockDrawer: Idrawer.IDrawer = struct
+        let open_graph u = ()
+        let close_graph u = ()
+        let delay u = ()
+        let draw u = ()
+    end
+        
     (*TODO: build module Command using CommandImpl, Pose, MockDrawer, Board*)
     module Command = Command.CommandImpl (Pose) (Mockdrawer) (Board) 
 
