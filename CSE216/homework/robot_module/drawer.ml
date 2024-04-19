@@ -12,7 +12,7 @@ open Idrawer
     DrawerImpl takes modules
         Vect of IVect type, Basis of IBasis type, Board of IBoard type, Pose of IPose type in this order
     and implements the signature IDrawer*)
-module DrawImpl (Vect: IVect) (Basis: IBasis) (Board: IBoard) (Pose: IPose): IDrawer = struct
+module DrawerImpl (Vect: IVect) (Basis: IBasis) (Board: IBoard) (Pose: IPose): IDrawer = struct
     (*open a graphics window*)
     let open_graph () =
         Graphics.open_graph " 800x800";
