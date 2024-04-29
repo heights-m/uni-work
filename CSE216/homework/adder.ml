@@ -17,14 +17,19 @@ module Stream: IStream = struct
 
     let cons h t = Cons (h, t)
 
-    let nil () = (*what*)
+    let nil () = Nil
 
     let car = function
+        | Nil -> assert false
+        | Cons (h, _) -> h
 
     let cdr = function
+        | Nil -> assert false
+        | Cons (_, t) -> t ()
 
     let rec index s n =     (*return the n-th element of stream s*)
-
+        if n = 0 then car s
+        else index (cdr s) (n - 1)
 end
 
 module TestStream = struct
@@ -60,7 +65,8 @@ module Wire: IWire = struct
     (* TODO: implement constant
        constant c returns the infinite stream of c
     *)
-    let rec constant c =
+    let rec constant c = 
+        cons c (fun () -> constant c)
 
 
     let w_zero = constant 0
@@ -135,13 +141,26 @@ module GateBuilder (P: IGateParam): IGate = struct
         e.g. g_and [1; 1; 0; 0; ...] [1; 0; 1; 0; ...] => [1; 0; 0; 0; ...]
     *)
     let g_and w_a w_b = 
-
+        let rec iter wa wb = 
+            let a = car wa in
+            let b = car wb in
+            let o = if (a = 1 && b = 1) then 1
+                    else 0 in
+            cons o (fun () -> iter (cdr wa) (cdr wb)) in
+        iter w_a w_b |> delay P.delay_and
 
     (*TODO: impement g_or, the or-gate
         - g_or returns the stream of the disjunction of w_a and w_b
         e.g. g_and [1; 1; 0; 0; ...] [1; 0; 1; 0; ...] => [1; 1; 1; 0; ...]
     *)
     let g_or w_a w_b = 
+        let rec iter wa wb = 
+            let a = car wa in
+            let b = car wb in
+            let o = if (a = 0 && b = 0) then 0
+                    else 1 in
+            cons o (fun () -> iter (cdr wa) (cdr wb)) in
+        iter w_a w_b |> delay P.delay_or
 
 
 end
@@ -191,7 +210,11 @@ module AdderBuilder (G:IGate) : IAdder = struct
                     => ([0; 1; 1; 0; ...], [1; 0; 0; 0; ...])
     *)
     let half_adder w_a w_b =
-
+        let c = g_and w_a w_b in
+        let e = g_not c in
+        let d = g_or w_a w_b in
+        let s = g_and d e in
+        (s, c) 
 
 
     (*TODO: impement full_adder, a full-adder
@@ -203,7 +226,10 @@ module AdderBuilder (G:IGate) : IAdder = struct
                     => ([1; 0; 1; 0; ...], [1; 1; 0; 0; ...])
     *)
     let full_adder w_a w_b w_c = 
-
+        let (s1, c1) = half_adder w_b w_c in
+        let (s2, c2) = half_adder s1 w_a in
+        let c = g_or c2 c1 in
+        (s2, c)
 
 
     (*TODO: impement adder, an n-bit adder
