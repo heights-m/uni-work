@@ -15,9 +15,9 @@ end
 module Stream: IStream = struct
     type 'a stream = Nil | Cons of 'a * (unit -> 'a stream)
 
-    let cons h t =
+    let cons h t = Cons (h, t)
 
-    let nil () =
+    let nil () = (*what*)
 
     let car = function
 
