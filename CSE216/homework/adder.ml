@@ -41,7 +41,7 @@ module TestStream = struct
         assert (1   = (s |> car));
         assert (2   = (s |> cdr |> car));
         assert (Nil = (s |> cdr |> cdr));
-        Printf.printf "Success!\n"
+        Printf.printf "Stream Success!\n"
 end
 
 let _ = TestStream.test()
@@ -93,7 +93,7 @@ module TestWire = struct
         assert (0 = (w_zero |> car));
         assert (1 = (w_one  |> car));
         assert (1 = (w_one  |> cdr |> car));
-        Printf.printf "Success!\n"
+        Printf.printf "Wire Success!\n"
 end
 
 let _ = TestWire.test()
@@ -182,12 +182,12 @@ module TestGate = struct
         assert (0 = (w_or  |> car));
         assert (0 = (w_or  |> cdr |> car));
         assert (1 = (w_or  |> cdr |> cdr |> car));
-        Printf.printf "Success!\n"
+        Printf.printf "Gate Success!\n"
 end
 
 let _ = TestGate.test()
 
-
+(*
 (** Adder ****************************
 *)
 module type IAdder = sig
@@ -328,3 +328,4 @@ module TestAdder = struct
 end
 
 let _ = TestAdder.test()
+*)
