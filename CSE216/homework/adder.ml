@@ -187,7 +187,6 @@ end
 
 let _ = TestGate.test()
 
-(*
 (** Adder ****************************
 *)
 module type IAdder = sig
@@ -249,9 +248,13 @@ module AdderBuilder (G:IGate) : IAdder = struct
     *)
     let adder wl_a wl_b =
         let rec iter wl_a wl_b w_c =
-
-
-
+			match wl_a with
+			| [] -> [w_c]
+			| hda :: tla -> 
+				match wl_b with
+				| [] -> []
+				| hdb :: tlb -> let (s, c) = full_adder hda hdb w_c in
+				s :: iter tla tlb c in
         iter wl_a wl_b w_zero
 end
 
@@ -328,4 +331,3 @@ module TestAdder = struct
 end
 
 let _ = TestAdder.test()
-*)
