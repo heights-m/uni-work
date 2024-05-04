@@ -1,6 +1,11 @@
 #include <stdio.h>
 
-int FindMax (int a[], int n) {
+/* Write a function PrintAssembly 
+ * Arguements: array A of int
+ * 		length N of array
+ * And prints elements in ascending order without sorting the array*/
+
+int PrintAscending (int a[], int n) {
 	int max = a[0], i;
 	
 	for (i = 1; i < n; i++) {
