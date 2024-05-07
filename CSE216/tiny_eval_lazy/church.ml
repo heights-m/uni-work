@@ -420,10 +420,11 @@ NUM(2)
 *)
 let str_index = 
 	"(lambda (i s)
-		(Y (lambda (f in str) (IF (EQU in ZERO)
+		(Y (lambda (f str in) (IF (EQU in ZERO)
 								(CAR str)
-								(f (SUB in ONE) (CDR str))))
+								(f (CDR str) (SUB in ONE))))
 								i s))"
+
 
 let str_nat = 
 	"(Y (lambda (f n) (CONS n (f (ADD n ONE))))
