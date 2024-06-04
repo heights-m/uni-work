@@ -5,6 +5,13 @@
 
 //TODO: return the number of unique words in sorted_words
 int unique_word_count(char **sorted_words, int wc) {
+	int count = 1;
+	for (int i = 1; i < wc; i++) {
+		if (strcmp(sorted_words[i], sorted_words[i-1]) != 0) {
+			count++;
+		}
+	}
+	return count;
     /*hint: because the words are sorted, duplicated words are grouped together
             skip counting the duplicated words*/
 }
@@ -13,7 +20,7 @@ int unique_word_count(char **sorted_words, int wc) {
 //      and the number of unique words in sorted_words
 void make_word_freqs(char **sorted_words, int wc, word_freq_t **pword_freqs, int *puwc) {
     int uwc = unique_word_count(sorted_words, wc);
-    word_freq_t *word_freqs; /*hint: using malloc, allocate word_freq_t
+	word_freq_t *word_freqs = malloc(uwc * sizeof(word_freq_t)); /*hint: using malloc, allocate word_freq_t
                                      array of uwc elements*/
 
     /*hint: if wc > 0, initialize word_freqs[0]
@@ -25,6 +32,19 @@ void make_word_freqs(char **sorted_words, int wc, word_freq_t **pword_freqs, int
 
     *pword_freqs = word_freqs;
     *puwc = uwc;
+	if (wc > 0) {
+		word_freqs[0].word = sorted_words[0];
+		word_freqs[0].freq = 1;
+	}
+	for (int i = 1; i < wc; i++) {
+		if (strcmp(sorted_words[i], sorted_words[i-1]) == 0) {
+			word_freqs->freq++;
+		} else {
+			word_freqs++;
+			word_freqs->word = sorted_words[i];
+			word_freqs->freq = 1;
+		}
+	}
 }
 
 //print the frequency of words
