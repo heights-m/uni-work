@@ -24,10 +24,11 @@ int main() {
     print_words(words, wc);
     printf("word count: %d\n", word_count(str));
 
+/*
     //count the frequencies of words
     make_word_freqs(words, wc, &word_freqs, &uwc);
     print_word_freqs(word_freqs, uwc);
     printf("unique word count: %d\n", unique_word_count(words, wc));
-
+*/
     return 0;
 }
