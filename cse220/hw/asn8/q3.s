@@ -1,6 +1,6 @@
 .data 
-	s1: .asciiz "abcdefg"
-	s2: .asciiz "abcdefg"
+	s1: .asciiz "abcdea"
+	s2: .asciiz "abcdef"
 	txt: .asciiz "Result: "
 .text
 main:
@@ -20,17 +20,17 @@ main:
 	syscall
 
 strcmp:
-	addi $sp, $sp, -8
+	addi $sp, $sp, -12		#save to stack
+	sw $ra, 8($sp)
 	sw $t0, 4($sp)
 	sw $t1, 0($sp)
 
-iter:
 	lb $t0, 0($a0)			#get char from s1
 	lb $t1, 0($a1)			#get char from s2
 	beq $t0, $0, s1end 
 	beq $t1, $0, s2end
 	beq $t0, $t1, cont		#if chars equal, cont
-		bgt $t0, $t1, big	#if s1 > s2, 
+		bgt $t0, $t1, big	#if s1 > s2, big
 		li $v0, -1			#set v0 = -1
 		j end
 big:
@@ -39,11 +39,12 @@ big:
 cont:
 	addi $a0, $a0, 1		#incr s1
 	addi $a1, $a1, 1		#incr s2
-	j iter
+	jal strcmp				#recursive call
 end:
+	lw $ra, 8($sp)
 	lw $t0, 4($sp)
 	lw $t1, 0($sp)
-	addi $sp, $sp, 8
+	addi $sp, $sp, 12		#deallocate stack
 	jr $ra
 	
 s1end:
