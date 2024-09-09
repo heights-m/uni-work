@@ -1,0 +1,86 @@
+h1 {
+    width: 50%;
+    background-color: wheat;
+}
+
+p {
+    color: indigo;
+}
+
+.bigText {
+    color: mediumblue;
+    background-color: chartreuse;
+}
+
+[href] {
+    border: 2px solid salmon;
+    background-color: aquamarine;
+    font-size: 25px;
+}
+
+[href='https://lett'] {
+    border: 2px solid forestgreen;
+    border-radius: 5px;
+    background-color: lemonchiffon;
+    font-size: 25px;
+}
+
+#specialboy {
+    font-weight: bold;
+    font-size: 100px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: rgb(255, 0, 128);
+    background: radial-gradient(yellow, chartreuse);
+}
+
+ul li {
+    font-size: 30px;
+    color: orangered;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+li + li { /* list item following a list item? ~ does sumn as well , uhh siblings?? */
+    font-size: 250%;
+    color: slateblue;
+}
+
+#specialsect li{
+    font-size: 200%;
+    color: palevioletred;
+    border: 10px solid powderblue;
+    list-style: inside;
+}
+
+#specialsect p:first-of-type{
+    font-size: 250%;
+    color: royalblue;
+    padding: 50px;
+    background-color: powderblue;
+}
+
+a:hover {
+    color: red;
+    font-weight: bold;
+}
+
+::selection {
+    background-color: hotpink;
+}
+
+#honkshoo {
+    font-size: 1.5rem;
+    font-family: cursive;
+    color: rgb(120, 137, 180);
+    padding: 90px;
+    background: radial-gradient(powderblue, rgb(255, 255, 255));
+}
+
+div > p { /* child of div */
+    color: brown;
+    font-size: 25px;
+}
+
+div + p { /* 1st sibling after div */
+    color: green;
+    font-size: 30px;
+}
