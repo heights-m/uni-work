@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <button onClick="javascript: fillCountry()">Build Country List</button>
+    <button onClick="fillState()">Build State List</button>
+    <button onClick="javascript: clearLists()">Clear Lists</button>
+    <button onClick="printLis()">Print</button>
+
+    <div id="main"></div>
+
+
+    <script>
+        function fillState() {
+            fillList(['California', 'Kentucky', 'Tenesseeeee']);
+        }
+
+        function fillCountry() {
+            fillList(['Montenegro', 'The Gambia', 'Mongolia', 'Solomon Islands']);
+        }
+
+        function printLis() {
+            const topdiv = document.getElementsByClassName('createdUl');
+            const ul = topdiv[0];
+            ul.childNodes.map((item) => console.log(item));
+        }
+    </script>
+
+    <script src="../script/testing.js"></script>
+</body>
+</html>

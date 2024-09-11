@@ -1,0 +1,49 @@
+Script started on 2024-09-04 04:02:00+00:00 [TERM="xterm" TTY="/dev/pts/0" COLUMNS="80" LINES="24"]
+[?2004h]0;ubuntu@ip-172-31-83-217: ~ubuntu@ip-172-31-83-217:~$ cd cse320/
+[?2004l[?2004h]0;ubuntu@ip-172-31-83-217: ~/cse320ubuntu@ip-172-31-83-217:~/cse320$ ls -la
+[?2004ltotal 12
+drwxrwxr-x 3 ubuntu ubuntu 4096 Aug 29 01:04 [0m[01;34m.[0m
+drwxr-x--- 5 ubuntu ubuntu 4096 Sep  4 04:02 [01;34m..[0m
+drwxrwxr-x 4 ubuntu ubuntu 4096 Aug 29 01:05 [01;34mtest1[0m
+[?2004h]0;ubuntu@ip-172-31-83-217: ~/cse320ubuntu@ip-172-31-83-217:~/cse320$ ls -rla
+[?2004ltotal 12
+drwxrwxr-x 4 ubuntu ubuntu 4096 Aug 29 01:05 [0m[01;34mtest1[0m
+drwxr-x--- 5 ubuntu ubuntu 4096 Sep  4 04:02 [01;34m..[0m
+drwxrwxr-x 3 ubuntu ubuntu 4096 Aug 29 01:04 [01;34m.[0m
+[?2004h]0;ubuntu@ip-172-31-83-217: ~/cse320ubuntu@ip-172-31-83-217:~/cse320$ ls -r
+[?2004l[0m[01;34mtest1[0m
+[?2004h]0;ubuntu@ip-172-31-83-217: ~/cse320ubuntu@ip-172-31-83-217:~/cse320$ ls -R
+[?2004l.:
+[0m[01;34mtest1[0m
+
+./test1:
+[01;34mhey[0m  [01;34mhi[0m
+
+./test1/hey:
+
+./test1/hi:
+[?2004h]0;ubuntu@ip-172-31-83-217: ~/cse320ubuntu@ip-172-31-83-217:~/cse320$ cd ..
+[?2004l[?2004h]0;ubuntu@ip-172-31-83-217: ~ubuntu@ip-172-31-83-217:~$ mksir[K[K[K[Kkdir Assignment1
+[?2004l[?2004h]0;ubuntu@ip-172-31-83-217: ~ubuntu@ip-172-31-83-217:~$ cd Assignment1/
+[?2004l[?2004h]0;ubuntu@ip-172-31-83-217: ~/Assignment1ubuntu@ip-172-31-83-217:~/Assignment1$ mkdir MyDoc MyAssignment MyCode
+[?2004l[?2004h]0;ubuntu@ip-172-31-83-217: ~/Assignment1ubuntu@ip-172-31-83-217:~/Assignment1$ touch doc.txt
+[?2004l[?2004h]0;ubuntu@ip-172-31-83-217: ~/Assignment1ubuntu@ip-172-31-83-217:~/Assignment1$ toc[Kuch cod[K[K[Khello.c
+[?2004l[?2004h]0;ubuntu@ip-172-31-83-217: ~/Assignment1ubuntu@ip-172-31-83-217:~/Assignment1$ mv doc.txt MyDoc/
+[?2004l[?2004h]0;ubuntu@ip-172-31-83-217: ~/Assignment1ubuntu@ip-172-31-83-217:~/Assignment1$ mv hello.c m[KMyCode/
+[?2004l[?2004h]0;ubuntu@ip-172-31-83-217: ~/Assignment1ubuntu@ip-172-31-83-217:~/Assignment1$ cd MyCode/[K[K[K[K[KDoc/
+[?2004l[?2004h]0;ubuntu@ip-172-31-83-217: ~/Assignment1/MyDocubuntu@ip-172-31-83-217:~/Assignment1/MyDoc$ ls -la
+[?2004ltotal 8
+drwxrwxr-x 2 ubuntu ubuntu 4096 Sep  4 04:03 [0m[01;34m.[0m
+drwxrwxr-x 5 ubuntu ubuntu 4096 Sep  4 04:03 [01;34m..[0m
+-rw-rw-r-- 1 ubuntu ubuntu    0 Sep  4 04:03 doc.txt
+[?2004h]0;ubuntu@ip-172-31-83-217: ~/Assignment1/MyDocubuntu@ip-172-31-83-217:~/Assignment1/MyDoc$ mv doc.txt text.tct[K[K[Ktxt
+[?2004l[?2004h]0;ubuntu@ip-172-31-83-217: ~/Assignment1/MyDocubuntu@ip-172-31-83-217:~/Assignment1/MyDoc$ ls
+[?2004ltext.txt
+[?2004h]0;ubuntu@ip-172-31-83-217: ~/Assignment1/MyDocubuntu@ip-172-31-83-217:~/Assignment1/MyDoc$ cd ../MyCode/
+[?2004l[?2004h]0;ubuntu@ip-172-31-83-217: ~/Assignment1/MyCodeubuntu@ip-172-31-83-217:~/Assignment1/MyCode$ mv hello.c code.c
+[?2004l[?2004h]0;ubuntu@ip-172-31-83-217: ~/Assignment1/MyCodeubuntu@ip-172-31-83-217:~/Assignment1/MyCode$ ls
+[?2004lcode.c
+[?2004h]0;ubuntu@ip-172-31-83-217: ~/Assignment1/MyCodeubuntu@ip-172-31-83-217:~/Assignment1/MyCode$ [?2004l
+exit
+
+Script done on 2024-09-04 04:04:35+00:00 [COMMAND_EXIT_CODE="0"]
