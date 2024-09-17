@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facility Reservation App</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar_container">
+            <a href="index.html" id="navbar-home">
+                <svg xmlns="http://www.w3.org/2000/svg" height="27px" viewBox="0 -960 960 960" width="27px" fill="#000000"><path d="M160-120v-480l320-240 320 240v480H560v-280H400v280H160Z"/></svg>
+            </a>
+            <!-- hamburger menu icon -->
+            <div class="navbar_toggle" id="small-menu"> 
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar_menu">
+                <li class="navbar_item">
+                    <a href="" class="navbar_link">Facililty List</a>
+                </li>
+                <li class="navbar_item">
+                    <a href="" class="navbar_link">Facility Reservation</a>
+                </li>
+                <li class="navbar_item" id="navbar-dropdown">
+                    <div class="navbar_link" id="navbar-mypage">
+                        <p>My Page</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M480-360 280-560h400L480-360Z"/></svg>
+                    </div>
+                    <div class="navbar_dropdown_cont">
+                        <a href="">My Information</a>
+                        <a href="">My Reservation</a> 
+                    </div>
+                </li>
+            </ul>
+            <img id="navbar-profile" style="width: 30px;" src="../images/user.png" alt="User icon">
+        </div>
+    </nav>
+
+    <div class="main_content">
+        <h1>Facility Reservation App</h1>
+        <ul id="home-info">
+            <li>
+                <p>Facility List</p>
+                <p>Use this to display a list of Facilities with site information and pictures</p>
+            </li>
+            <li>
+                <p>Facility Reservation</p>
+                <p>Use this to Reserve a facility [Application form]</p>
+            </li>
+            <li>
+                <p>My Page</p>
+                <p>This holds information related to you</p>
+                <ul>
+                    <li><p><b>My information</b> - Your profile</p></li>
+                    <li><p><b>Reservation History</b> - Your list of reservations</p></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    
+
+    <script src="../script/app.js"></script>
+</body>
+</html>
