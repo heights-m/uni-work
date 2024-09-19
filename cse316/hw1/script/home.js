@@ -2,7 +2,6 @@ const smallMenu = document.querySelector('#small-menu');
 const menuLinks = document.querySelector('.navbar_menu');
 const mainContent = document.querySelector('.main_content');
 let smallMenuOpen = false;
-let pushedMargin = 0;
 
 
 smallMenu.addEventListener('click', function() {

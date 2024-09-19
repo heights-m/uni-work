@@ -1,25 +1,60 @@
-const smallMenu = document.querySelector('#small-menu');
-const menuLinks = document.querySelector('.navbar_menu');
-const mainContent = document.querySelector('.main_content');
-let smallMenuOpen = false;
+const CARDS_CONTAINER = document.getElementById('flex_container');
 
+function createCard(facility) {
+    let cardContainer = document.createElement('div');
+    cardContainer.classList.add('facil_container');
+    CARDS_CONTAINER.appendChild(cardContainer);
 
-smallMenu.addEventListener('click', function() {
-    smallMenu.classList.toggle('is-active');
-    menuLinks.classList.toggle('active');
+    let img = document.createElement('img');
+    img.setAttribute("src", facility.img);
+    img.classList.add('facil_list_img');
+    cardContainer.appendChild(img);
 
-    setTimeout(function() {if (smallMenuOpen) { //pushes content below navbar down when open
-        mainContent.style.marginTop = "0px";
-        smallMenuOpen = false;
-    } else {
-        mainContent.style.marginTop = "175px";
-        smallMenuOpen = true;
-    }}, 300);
-});
+    let title = document.createElement('p');
+    title.textContent = facility.name;
+    title.classList.add("facil_list_title");
+    cardContainer.appendChild(title);
+
+    let desc = document.createElement('p');
+    desc.textContent = facility.desc;
+    desc.classList.add('facil_list_txt');
+    cardContainer.appendChild(desc);
+
+    img = document.createElement('img');
+    img.setAttribute("src", '../images/group_24dp_E8EAED_FILL1_wght400_GRAD0_opsz24.svg');
+    img.classList.add('facil_list_icon');
+    cardContainer.appendChild(img);
+
+    desc = document.createElement('p');
+    desc.textContent = facility.capacity;
+    desc.classList.add('facil_list_txt');
+    cardContainer.appendChild(desc);
+
+    img = document.createElement('img');
+    img.setAttribute("src", '../images/location_on_24dp_E8EAED_FILL1_wght400_GRAD0_opsz24.svg');
+    img.classList.add('facil_list_icon');
+    cardContainer.appendChild(img);
+
+    desc = document.createElement('p');
+    desc.textContent = facility.location;
+    desc.classList.add('facil_list_txt');
+    cardContainer.appendChild(desc);
+
+    img = document.createElement('img');
+    img.setAttribute("src", '../images/error_24dp_E8EAED_FILL1_wght400_GRAD0_opsz24.svg');
+    img.classList.add('facil_list_icon');
+    cardContainer.appendChild(img);
+
+    desc = document.createElement('p');
+    desc.textContent = facility.avail;
+    desc.classList.add('facil_list_txt');
+    cardContainer.appendChild(desc);
+}
 
 function makeFacility(data) {
     for (facility of data) {
         console.log(facility);
+        createCard(facility);
     }
 }
 
@@ -29,11 +64,14 @@ function getFacility() {
         return responce.json();
     })
     .then(function(data) {
-        makeFacility(JSON.parse(data));
+        makeFacility(data);
     }) 
     .catch(function(error) {
         console.log('error: ', error);
     });
 }
 
-window.onload(getFacility());
+window.addEventListener("load", (event) => {
+    console.log(document.URL);
+    getFacility();
+});

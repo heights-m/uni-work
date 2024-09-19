@@ -6,7 +6,7 @@
 }
 
 body {
-    background-color: rgb(237, 234, 255);
+    background-color: rgb(243, 243, 255);
 }
 
 h1 {
@@ -72,16 +72,16 @@ h1 {
 
 
 .navbar_item:hover {
-    background-color: rgb(202, 200, 215);
+    background-color: rgb(212, 208, 235);
 }
 
 .navbar_dropdown_cont {
     display: none;
     position: absolute;
-    background-color: white;
+    background-color: rgb(243, 243, 255);
     box-shadow: 0px 2px 8px 0px rgba(0,0,0,0.1);
     z-index: 1;
-    border: 2px solid rgb(202, 200, 215);
+    border: 2px solid rgb(212, 208, 235);
 }
 
 .navbar_dropdown_cont a {
@@ -123,11 +123,10 @@ h1 {
     }
 
     .navbar_menu.active {
-        top: 100%;
+        top: 80px;
         opacity: 1;
         transition: all 0.5s ease;
         z-index: 99;
-        height: 175px;
     }
     
     .navbar_toggle .bar {
@@ -174,6 +173,10 @@ h1 {
     .navbar_dropdown_cont {
         width: 100%;
     }
+
+    .facil_list_img {
+        width: 45vw;
+    }
 }
 
 .main_content {
@@ -189,18 +192,24 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 100%;
+    width: auto;
 }
 
 .facil_container {
     display: flex;
     justify-content: left;
     align-items: center;
+    background-color: rgb(237, 234, 255);
+    border-radius: 12px;
+    margin-right: 3vw;
 }
 
 .facil_list_img {
-    height: 200px;
-    border-radius: 15px;
-    box-shadow: 0px 4px 3px 5px rgba(0,0,0,0.1);
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0px 4px 3px 4px rgba(0,0,0,0.1);
 }
 
 .facil_list_details {
