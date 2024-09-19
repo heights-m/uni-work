@@ -25,7 +25,7 @@ h1 {
 
 .navbar_container {
     display: flex;
-    background-color: antiquewhite;
+    background-color: rgb(237, 234, 255);
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -153,7 +153,7 @@ h1 {
     }
 
     #small-menu {
-        position: absolute;
+        position: initial;
         top: 20%;
         right: 5%;
         transform: translate(5%, 20%);
@@ -183,4 +183,41 @@ h1 {
 #home-info li {
     margin-top: 20px;
     margin-left: 30px;
+}
+
+#flex_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.facil_container {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.facil_list_img {
+    height: 200px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 3px 5px rgba(0,0,0,0.1);
+}
+
+.facil_list_details {
+    width: 150px;
+    margin: 0px 30px 8px 30px;
+}
+
+.facil_list_title {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.facil_list_details svg {
+    float: left;
+    margin-right: 6px;
+}
+
+.facil_list_details p {
+    margin: 12px 0px 12px 0px;
 }
