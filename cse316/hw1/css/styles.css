@@ -51,6 +51,10 @@ h1 {
     margin-left: 25%;
 }
 
+.navbar_item {
+    margin: 0px 7px 0px 7px;
+}
+
 .navbar_link {
     text-decoration: none;
     color: black;
@@ -179,8 +183,12 @@ h1 {
     }
 }
 
-.main_content {
+#main_content {
     padding: 5vh 12vw 5vh 12vw;
+}
+
+#main_content_facil {
+    padding: 5vh 3vw 5vh 3vw;
 }
 
 #home-info li {
@@ -190,10 +198,10 @@ h1 {
 
 #flex_container {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     height: 100%;
-    width: auto;
 }
 
 .facil_container {
@@ -202,31 +210,38 @@ h1 {
     align-items: center;
     background-color: rgb(237, 234, 255);
     border-radius: 12px;
-    margin-right: 3vw;
+    margin-right: 2vw;
+    margin-bottom: 30px;
+    max-height: 160px;
 }
 
 .facil_list_img {
-    max-height: 200px;
+    max-height: 150px;
     object-fit: cover;
     border-radius: 12px;
     box-shadow: 0px 4px 3px 4px rgba(0,0,0,0.1);
 }
 
 .facil_list_details {
-    width: 150px;
-    margin: 0px 30px 8px 30px;
+    width: 175px;
+    margin: 0px 25px 8px 25px;
 }
 
+
 .facil_list_title {
-    font-size: 28px;
+    font-size: 20px;
     font-weight: bold;
 }
 
-.facil_list_details svg {
+.facil_list_details img {
     float: left;
     margin-right: 6px;
+    height: 20px;
+    width: 20px;
 }
 
-.facil_list_details p {
-    margin: 12px 0px 12px 0px;
+
+.facil_list_txt {
+    font-size: 14px;
+    margin: 8px 0px 8px 0px;
 }
