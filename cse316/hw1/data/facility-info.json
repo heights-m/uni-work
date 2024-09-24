@@ -1,50 +1,56 @@
 [
-    {
-        "name":"Gym",
-        "desc":"sports hall",
-        "capacity":4,
-        "location":"C1033",
-        "avail":"Available to all",
-        "img":"../images/gym.jpg"
-    },
-    {
-        "name":"Auditorium",
-        "desc":"The Auditorium Theater",
-        "capacity":30,
-        "location":"A234",
-        "avail":"Available to all",
-        "img":"../images/auditorium.jpg"
-    },
-    {
-        "name":"Swimming Pool",
-        "desc":"aquatic center",
-        "capacity":4,
-        "location":"C1033",
-        "avail":"Available to all",
-        "img":"../images/pool.jpg"
-    },
-    {
-        "name":"Seminar Room",
-        "desc":"lecture hall",
-        "capacity":4,
-        "location":"C1033",
-        "avail":"Available to all",
-        "img":"../images/seminar.jpg"
-    },
-    {
-        "name":"Conference Room",
-        "desc":"meeting space",
-        "capacity":4,
-        "location":"C1033",
-        "avail":"Only for SUNY Korea",
-        "img":"../images/conference.jpg"
-    },
-    {
-        "name":"Library",
-        "desc":"study and read books",
-        "capacity":4,
-        "location":"C1033",
-        "avail":"Only for SUNY Korea",
-        "img":"../images/library.jpg"
-    }
+    [
+        "Gym",
+        "sports hall",
+        4,
+        "C1033",
+        "Available to all",
+        true,
+        "../images/gym.jpg"
+    ],
+    [
+        "Auditorium",
+        "The Auditorium Theater",
+        30,
+        "A234",
+        "Available to all",
+        true,
+        "../images/auditorium.jpg"
+    ],
+    [
+        "Swimming Pool",
+        "aquatic center",
+        4,
+        "C1033",
+        "Available to all",
+        true,
+        "../images/pool.jpg"
+    ],
+    [
+        "Seminar Room",
+        "lecture hall",
+        4,
+        "C1033",
+        "Available to all",
+        true,
+        "../images/seminar.jpg"
+    ],
+    [
+        "Conference Room",
+        "meeting space",
+        4,
+        "C1033",
+        "Only for SUNY Korea",
+        false,
+        "../images/conference.jpg"
+    ],
+    [
+        "Library",
+        "study and read books",
+        4,
+        "C1033",
+        "Only for SUNY Korea",
+        false,
+        "../images/library.jpg"
+    ]
 ]

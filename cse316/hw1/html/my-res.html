@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Reservations</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <nav class="navbar"></nav>
+        <div class="navbar_container">
+            <a href="index.html" id="navbar-home">
+                <svg xmlns="http://www.w3.org/2000/svg" height="27px" viewBox="0 -960 960 960" width="27px" fill="#000000"><path d="M160-120v-480l320-240 320 240v480H560v-280H400v280H160Z"/></svg>
+            </a>
+            <!-- hamburger menu icon -->
+            <div class="navbar_toggle" id="small-menu"> 
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar_menu">
+                <li class="navbar_item">
+                    <a href="facility-list.html" class="navbar_link">Facililty List</a>
+                </li>
+                <li class="navbar_item">
+                    <a href="facility-res.html" class="navbar_link">Facility Reservation</a>
+                </li>
+                <li class="navbar_item" id="navbar-dropdown">
+                    <div class="navbar_link" id="navbar-mypage">
+                        <p>My Page</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M480-360 280-560h400L480-360Z"/></svg>
+                    </div>
+                    <div class="navbar_dropdown_cont">
+                        <a href="my-info.html">My Information</a>
+                        <a href="my-res.html">My Reservation</a> 
+                    </div>
+                </li>
+            </ul>
+            <img id="navbar-profile" style="width: 30px;" src="../images/user.png" alt="User icon">
+        </div>
+    </nav>
+
+    <div id="main_content">
+        <div class="flex_container"></div>
+    </div>
+    
+    <script src="../script/home.js"></script>
+    <script src="../script/my-res.js"></script>
+</body>
+</html>

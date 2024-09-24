@@ -41,9 +41,9 @@
     </nav>
 
     <div id="main_content">
-        <form action="">
+        <form action="javascript:" onsubmit="saveReservation()" id="res-form">
             <div>
-                <select name="facility" id="facil-select">
+                <select name="facility" id="facil-select" onchange="facilChanged(this)">
                     <option value="gym">Gym</option>
                     <option value="auditorium">Auditorium</option>
                     <option value="pool">Swimming Pool</option>
@@ -53,6 +53,27 @@
                 </select>
             </div>
             <div id="card-cont"></div>
+            <div>
+                <label for="datetbu">Date to be Used: </label>
+                <input type="date" id="datetbu" name="datetbu" required>
+            </div>
+            <div>
+                <label for="numppl">Number of People: </label>
+                <input type="number" name="numppl" id="numppl" required>
+            </div>
+            <div>
+                <label> Are you affiliated with SUNY Korea?</label> <br>
+                <input type="radio" id="afil-yes" name="afil" value="yes" required>
+                <label for="afil-yes">Yes</label> <br>
+                <input type="radio" id="afil-no" name="afil" value="no">
+                <label for="afil-no">No</label>
+            </div>
+
+            <div>
+                <label for="purpose">Purpose of Use: </label> <br>
+                <textarea name="purpose" id="purpose"></textarea>
+            </div>
+            <button class="button" type="submit">Submit</button>
         </form>
     </div>
 

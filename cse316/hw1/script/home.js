@@ -31,13 +31,13 @@ smallMenu.addEventListener('click', function() {
 });
 
 
-function createCard(facility, mainContainer) {
+function createCard(facility, mainContainer, svgarr) {
     let cardContainer = document.createElement('div');
     cardContainer.classList.add('facil_container');
     mainContainer.appendChild(cardContainer);
 
     let img = document.createElement('img');
-    img.setAttribute("src", facility.img);
+    img.setAttribute("src", facility[6]);
     img.classList.add('facil_list_img');
     cardContainer.appendChild(img);
 
@@ -46,39 +46,42 @@ function createCard(facility, mainContainer) {
     cardContainer.appendChild(detailContainer);
 
     let title = document.createElement('p');
-    title.textContent = facility.name;
+    title.textContent = facility[0];
     title.classList.add("facil_list_title");
     detailContainer.appendChild(title);
 
+    cardContainer = document.createElement('div');
+    cardContainer.classList.add('facil_desc_box');
+    detailContainer.appendChild(cardContainer);
+
     let desc = document.createElement('p');
-    desc.textContent = facility.desc;
+    desc.textContent = facility[1];
+    cardContainer.appendChild(desc);
+
+    img = document.createElement('img');
+    img.setAttribute("src", svgarr[0]);
+    detailContainer.appendChild(img);
+
+    desc = document.createElement('p');
+    desc.textContent = facility[2];
     desc.classList.add('facil_list_txt');
     detailContainer.appendChild(desc);
 
     img = document.createElement('img');
-    img.setAttribute("src", '../images/group_24dp_E8EAED_FILL1_wght400_GRAD0_opsz24.svg');
+    img.setAttribute("src", svgarr[1]);
     detailContainer.appendChild(img);
 
     desc = document.createElement('p');
-    desc.textContent = facility.capacity;
+    desc.textContent = facility[3];
     desc.classList.add('facil_list_txt');
     detailContainer.appendChild(desc);
 
     img = document.createElement('img');
-    img.setAttribute("src", '../images/location_on_24dp_E8EAED_FILL1_wght400_GRAD0_opsz24.svg');
+    img.setAttribute("src", svgarr[2]);
     detailContainer.appendChild(img);
 
     desc = document.createElement('p');
-    desc.textContent = facility.location;
-    desc.classList.add('facil_list_txt');
-    detailContainer.appendChild(desc);
-
-    img = document.createElement('img');
-    img.setAttribute("src", '../images/error_24dp_E8EAED_FILL1_wght400_GRAD0_opsz24.svg');
-    detailContainer.appendChild(img);
-
-    desc = document.createElement('p');
-    desc.textContent = facility.avail;
+    desc.textContent = facility[4];
     desc.classList.add('facil_list_txt');
     detailContainer.appendChild(desc);
 }

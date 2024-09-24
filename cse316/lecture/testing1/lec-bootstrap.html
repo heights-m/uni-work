@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <alter class="alter alert-danger alter-dismissable" role="alert">
+        Alert <button class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+    </alter>
+
+    <div class="container">
+        <div class="row text-info bg-primary">
+            <div class="col-6"> 
+                Text 1
+            </div>
+            <div class="col-3">
+                Text 2
+            </div>
+            <div class="col-3">
+                Text 3
+            </div>
+        </div>
+    </div>
+
+    <div class="container p-3">
+        <table class="table table-primary">
+            <thead>
+                <tr class="table-info">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                
+            </thead>
+            <tbody class="table-group-divider">
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="container">
+        <button class="btn btn-primary">
+            Blue button
+        </button>
+        <button class="btn btn-outline-danger">
+            Red outline button(solid on hover)
+        </button>
+    </div>
+
+    <form action="">
+        <label for="name" class="form-label">Name:</label>
+        <input type="text" id="name" class="form-control">
+        <label for="thecolor" class="form-label">Color:</label>
+        <input type="color" class="form-control-color">
+        <label for="selectme" class="form-label">Pick one</label>
+        <select name="selectme" id="selectme" class="form-select">
+            <option value="One">One</option>
+            <option value="Two">Two</option>
+        </select>
+        <label for="therange" class="from-control"></label>
+        <input type="range" id="therange" class="from-range">
+
+        <div class="form-check form-switch">
+            <label for="checks1" class="form-check-label">Item 1</label>
+            <input type="text" id="checks1" class="form-check-input">
+        </div>
+        <div class="form-check form-switch"></div>
+            <label for="checks2" class="form-check-label">Item 2</label>
+            <input type="text" id="checks2" class="form-check-input">
+        </div>
+    </form>
+
+    <div class="form-floating">
+        <input type="email" class="form-control" placeholder="email">
+        <label for="themail" class="form-label"></label>
+    </div>
+
+    <div class="input-group">
+        <div class="input-group-text">$</div>
+        <input type="number" id="text" class="form-control">
+        <div class="input-group-text">.00</div>
+    </div>
+
+</body>
+</html>
