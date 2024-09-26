@@ -21,6 +21,7 @@ h1 {
     position: sticky;
     top: 0;
     z-index: 999;
+    padding: 0;
 }
 
 .navbar_container {
@@ -41,6 +42,7 @@ h1 {
     list-style: none;
     text-align: center;
     align-items: center;
+    margin-bottom: 0;
 }
 
 #navbar-home {
@@ -112,6 +114,14 @@ h1 {
     background-color: rgb(234, 234, 242);
 }
 
+.navbar_item p {
+    margin-bottom: 0;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #000000;
+}
 
 @media screen and (max-width: 600px) {
     
@@ -163,6 +173,7 @@ h1 {
         padding: 2px;
         width: 100%;
         display: table;
+        margin: 15px 0 15px 0;
     }
 
     #small-menu {
@@ -195,10 +206,6 @@ h1 {
 
 #main_content {
     padding: 5vh 12vw 5vh 12vw;
-}
-
-#main_content_facil {
-    padding: 5vh 3vw 5vh 3vw;
 }
 
 #home-info li {
@@ -289,7 +296,7 @@ input::-webkit-inner-spin-button {
 /* firefox - remove arrows on number select */
 input[type=number] {
     -moz-appearance: textfield;
-  }
+}
 
 #purpose {
     width: 300px;
@@ -310,4 +317,99 @@ input[type=number] {
 
 .button:hover {
     background-color: rgb(237, 234, 255);
+}
+
+#user-container {
+    display: flexbox;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#user-container p {
+    margin-bottom: 0;
+}
+
+#user-profile {
+    height: 160px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.acc_info_changable {
+    display: inline-flex;
+    width: fit-content;
+    align-items: center;
+}
+
+.acc_info_changable > * {
+    margin-right: 5px;
+}
+
+.user-content {
+    margin: 10px 0 10px 0;
+}
+
+.change_btn {
+    background-color: rgb(237, 234, 255);
+    border: 2px solid rgb(183, 179, 209);
+    color: rgb(137, 132, 167);;
+    font-weight: bold;
+}
+
+.change_btn:hover {
+    background-color: rgb(157, 153, 184);
+    color: white;
+}
+
+.user-change-modal {
+    text-align: left;
+}
+
+.modal-title {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.user_change_input {
+    border: 1px solid #d1d1d1;
+    border-radius: 3px;
+    height: 34px;
+    padding: 8px;
+    width: 100%;
+    align-content: center;
+}
+
+#user_icon_input {
+    position: relative;
+    margin-bottom: 0;
+    padding: 0;
+}
+
+#imgchange {
+    opacity: 0;
+    position: relative;
+}
+
+#choose_file_btn {
+    position: absolute;
+    height: 32px;
+    border-radius: 0;
+    align-items: center;
+    padding: 0 8px 0 8px;
+    margin-right: 10px;
+    background-color: #f0f0f0;
+}
+
+#img_placehold {
+    margin-left: 105px;
+    height: 32px;
+    align-content: center;
+}
+
+#curr-pass {
+    border: 1px solid rgb(183, 179, 209);
+    background-color: rgb(243, 243, 255);
+    padding-left: 5px;
 }

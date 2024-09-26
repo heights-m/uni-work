@@ -1,6 +1,6 @@
 const smallMenu = document.querySelector('#small-menu');
 const menuLinks = document.querySelector('.navbar_menu');
-const mainContent = document.querySelector('.main_content');
+let mainContent = document.getElementById('main_content');
 let smallMenuOpen = false;
 
 
@@ -8,29 +8,22 @@ smallMenu.addEventListener('click', function() {
     smallMenu.classList.toggle('is-active');
     menuLinks.classList.toggle('active');
 
-    setTimeout(function() {if (smallMenuOpen) { //pushes content below navbar down when open
-        mainContent.style.marginTop = "0px";
+    mainContent = document.getElementById('main_content');
+    
+    //pushes content below navbar down when open
+    setTimeout(function() {if (smallMenuOpen) { 
+        mainContent.style.marginTop = "0px"; //remove extra space
         smallMenuOpen = false;
     } else {
-        mainContent.style.marginTop = "175px";
+        mainContent.style.marginTop = "198px";
         smallMenuOpen = true;
     }}, 300);
-    // let currentMargin = Number(mainContent.style.marginTop);
-    // console.log(smallMenuOpen + ' ' + pushedMargin);
-    // if (smallMenuOpen == true) {
-    //     pushedMargin = currentMargin - 175;
-    //     smallMenuOpen = false;
-    // } else {
-    //     pushedMargin = currentMargin + 175;
-    //     smallMenuOpen = true;
-    // }
-    // console.log(smallMenuOpen + ' ' + pushedMargin)
-    // console.log(175 -175)
-    // mainContent.style.marginTop = "" + pushedMargin + "px";
-    
 });
 
-
+// creates a single 'card' of facility information
+// takes an array of necessary information - 'facility'
+//          the container to put the card - 'mainContainer'
+//          an array of 3 svg links - 'svgarr'
 function createCard(facility, mainContainer, svgarr) {
     let cardContainer = document.createElement('div');
     cardContainer.classList.add('facil_container');

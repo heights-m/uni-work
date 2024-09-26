@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Information</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar_container">
+            <a href="index.html" id="navbar-home">
+                <svg xmlns="http://www.w3.org/2000/svg" height="27px" viewBox="0 -960 960 960" width="27px" fill="#000000"><path d="M160-120v-480l320-240 320 240v480H560v-280H400v280H160Z"/></svg>
+            </a>
+            <!-- hamburger menu icon -->
+            <div class="navbar_toggle" id="small-menu"> 
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar_menu">
+                <li class="navbar_item">
+                    <a href="facility-list.html" class="navbar_link">Facililty List</a>
+                </li>
+                <li class="navbar_item">
+                    <a href="facility-res.html" class="navbar_link">Facility Reservation</a>
+                </li>
+                <li class="navbar_item" id="navbar-dropdown">
+                    <div class="navbar_link" id="navbar-mypage">
+                        <p>My Page</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M480-360 280-560h400L480-360Z"/></svg>
+                    </div>
+                    <div class="navbar_dropdown_cont">
+                        <a href="my-info.html">My Information</a>
+                        <a href="my-res.html">My Reservation</a> 
+                    </div>
+                </li>
+            </ul>
+            <img id="navbar-profile" style="width: 30px;" src="../images/user.png" alt="User icon">
+        </div>
+    </nav>
+
+    <div id="main_content">
+        <div id="user-container">
+            <h1>User Information</h1>
+            
+            <img src="../images/user.png" alt="user profile" id="user-profile"> <br>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-sm change_btn" data-toggle="modal" data-target="#change-profile">
+              Change Image
+            </button>
+            
+            <!-- Modal -->
+            <div class="modal fade" id="change-profile" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                            <div class="modal-header">
+                                    <p class="modal-title">Change your image</p>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                </div>
+                        <div class="modal-body">
+                            <div class="user-change-modal">
+                                <form action="#">
+                                    <label for="imgchange" style="font-weight: 500;">New Image</label>
+                                    <div id="user_icon_input" class="user_change_input"> 
+                                        <button class="btn" id="choose_file_btn">Choose file</button>
+                                        <p id="img_placehold">No file chosen</p>
+                                        <input type="file" name="imgchange" id="imgchange" class="form-control-file user_change_input">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="user-content">
+                <p>Email: abc@stonybrook.edu</p>
+            </div>
+
+            <div class="acc_info_changable user-content">
+                <div>
+                    <label for="curr-pass">Password: </label>
+                    <input type="password" name="curr-pass" id="curr-pass" placeholder="******">
+                </div>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-sm change_btn" data-toggle="modal" data-target="#change-pass">
+                  Change Password
+                </button>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="change-pass" tabindex="-1" role="dialog" aria-labelledby="changePassword" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Change your password</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="user-change-modal" id="passwrd-change-input">
+                                    <label for="new-pass">New Password</label> <br>
+                                    <input type="password" name="new-pass" id="new-pass" class="user_change_input" placeholder="Enter new password">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="acc_info_changable user-content">
+                <p>Name:</p>
+                <p>John Doe</p>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-sm change_btn" data-toggle="modal" data-target="#change-name">
+                  Change Name
+                </button>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="change-name" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Change your name</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="user-change-modal" id="name-change-input">
+                                    <label for="new-name">New Name</label> <br>
+                                        <input type="text" name="new-name" id="new-name" class="user_change_input" placeholder="Enter new name">
+                                    
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="../script/home.js"></script>
+</body>
+</html>
